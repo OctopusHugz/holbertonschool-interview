@@ -8,13 +8,16 @@ def canUnlockAll(boxes):
         return False
     for box in boxes:
         for key in box:
-            if index + 1 == key:
-                unlocked.append(True)
             if key not in keys and key >= 1:
                 try:
                     keys[index].append(key)
                 except KeyError:
                     keys[index] = [key]
+        index += 1
+    index = 0
+    for box in boxes:
+        if index + 1 in boxes[index]:
+            unlocked.append(True)
         index += 1
     if unlocked.count(True) == len(boxes) - 1:
         return True
