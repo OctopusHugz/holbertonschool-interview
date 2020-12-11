@@ -2,7 +2,7 @@
 def canUnlockAll(boxes):
     """This function checks to see if all lockboxes can be unlocked"""
     unlocked = []
-    if 1 not in boxes[0] or len(boxes[0]) == 0:
+    if 1 not in boxes[0] or len(boxes) == 0:
         return False
 
     def unlocker(box):
