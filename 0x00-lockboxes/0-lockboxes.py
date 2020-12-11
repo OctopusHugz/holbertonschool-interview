@@ -46,6 +46,9 @@ def canUnlockAll(boxes):
                     unlocked.update({index + 1: True})
                     break
         index += 1
-    if len(unlocked.keys()) == len(boxes):
+    # print(unlocked)
+    # print(len(unlocked.keys()))
+    # print(len(boxes))
+    if len(unlocked.keys()) - 1 == len(boxes):
         return True
     return False
