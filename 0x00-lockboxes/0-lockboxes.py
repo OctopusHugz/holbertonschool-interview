@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""This module implements the canUnlockAll function"""
 def canUnlockAll(boxes):
     """This function checks to see if all lockboxes can be unlocked"""
     unlocked = []
