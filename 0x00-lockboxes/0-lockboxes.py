@@ -2,15 +2,13 @@
 def canUnlockAll(boxes):
     """This function checks to see if all lockboxes can be unlocked"""
     unlocked = []
-    if len(boxes) == 0 or len(boxes[0]) == 0 or boxes is None:
+    if len(boxes) == 0 or len(boxes[0]) == 0:
         return False
 
     def unlocker(box):
         if box not in unlocked and box < len(boxes):
             unlocked.append(box)
-            # print(unlocked)
             for key in boxes[box]:
-                # print("Running unlocker({:d})".format(box))
                 unlocker(key)
 
     unlocker(0)
