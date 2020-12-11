@@ -9,12 +9,9 @@ def canUnlockAll(boxes):
         if box not in unlocked and box < len(boxes):
             unlocked.append(box)
             # print(unlocked)
-            try:
-                for key in boxes[box]:
-                    # print("Running unlocker({:d})".format(box))
-                    unlocker(key)
-            except IndexError:
-                pass
+            for key in boxes[box]:
+                # print("Running unlocker({:d})".format(box))
+                unlocker(key)
 
     unlocker(0)
     if len(unlocked) == len(boxes):
