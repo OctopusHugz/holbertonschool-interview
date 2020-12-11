@@ -6,7 +6,7 @@ def canUnlockAll(boxes):
         return False
 
     def unlocker(box):
-        if box not in unlocked:
+        if box not in unlocked and box < len(boxes):
             unlocked.append(box)
             # print(unlocked)
             try:
