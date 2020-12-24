@@ -1,7 +1,7 @@
 #include "binary_trees.h"
 
 /**
- * head_insert - Creates a binary tree node
+ * heap_insert - Creates a binary tree node
  *
  * @root: double pointer to the root node of the Heap
  * @value: value store in the node to be inserted
@@ -11,33 +11,13 @@
 heap_t *heap_insert(heap_t **root, int value)
 {
 	/* size_t node_count; */
-	binary_tree_t *new_node = binary_tree_node(*root, value) /* *current = *root */;
+	binary_tree_t *new_node = binary_tree_node(*root, value);
+	/* binary_tree_t = *current = *root; */
 
 	if (!new_node)
 		return (NULL);
 	if (!*root)
 		*root = new_node;
-	/* else
-	{
-		while (current)
-		{
-			if (current->n < new_node->n)
-			{
-				new_node->left = current;
-				if (!current->parent)
-					*root = new_node;
-				current->parent = new_node;
-			}
-			else if (current->n > new_node->n)
-			{
-				new_node->right = current;
-				if (!current->parent)
-					*root = new_node;
-				current->parent = new_node;
-			}
-			current = current->left;
-		}
-	} */
 	return (new_node);
 }
 
