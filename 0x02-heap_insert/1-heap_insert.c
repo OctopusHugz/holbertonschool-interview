@@ -11,13 +11,36 @@
 heap_t *heap_insert(heap_t **root, int value)
 {
 	/* size_t node_count; */
-	binary_tree_t *new_node = binary_tree_node(*root, value);
-	/* binary_tree_t = *current = *root; */
+	binary_tree_t *new_node = binary_tree_node(*root, value), *current = *root;
 
 	if (!new_node)
 		return (NULL);
 	if (!*root)
 		*root = new_node;
+	while (current)
+	{
+		if (new_node->n < current->n)
+		{
+			current->left = new_node;
+			new_node->parent = current;
+		}
+		else if (new_node->n > current->n)
+		{
+			current->parent = new_node;
+			if (!current->left && !current->right)
+				new_node->left = current;
+			else if (!current->right)
+			{
+				new_node->right = current;
+				new_node->left = current->left;
+				current->left->parent = new_node;
+				current->left = NULL;
+			}
+			*root = new_node;
+			break;
+		}
+		current = current->left;
+	}
 	return (new_node);
 }
 
