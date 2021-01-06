@@ -2,14 +2,6 @@
 """This module returns minimum operations"""
 
 
-# def minOperations(n):
-#     """Returns minimum operations to result in n characters in a text file"""
-#     if n < 1:
-#         return 0
-#     else:
-#         return n
-
-
 def minOperations(n):
     """Returns minimum operations to result in n characters in a text file"""
     # find smallest divisor starting at 2
