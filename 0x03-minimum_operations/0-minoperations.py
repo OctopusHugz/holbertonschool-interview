@@ -59,32 +59,31 @@ def greater_divisor(n, sd):
 def minOperations(n):
     """Returns minimum operations to result in n characters in a text file"""
     min_ops = 0
+    step = 2
     # sd = smallest_divisor(n)
     # hd = highest_divisor(n)
     # print("sd is: {}".format(sd))
     # print("hd is: {}".format(hd))
-    # if n < 1:
-    #     return 0
-    # for i in range(2, n + 1):
-    #     print("i is: {}".format(i))
-    #     print("min_ops is: {}".format(min_ops))
-    #     while n % i != 0:
-    #         min_ops += i
-    #         n //= i
-    #     print("min_ops is now: {}".format(min_ops))
-    # return min_ops
+    if n < 1:
+        return 0
+    for i in range(2, n + 1):
+        while n % i == 0:
+            min_ops += step
+            n //= step
+        step += 1
+    return min_ops
 
 
-    def factors(n):
-        d = 2
-        while d * d <= n:
-            while n % d == 0:
-                n /= d
-                yield d
-            d += 1
-        if n > 1:
-            yield n
-    return int(sum(factors(n)))
+    # def factors(n):
+    #     d = 2
+    #     while d * d <= n:
+    #         while n % d == 0:
+    #             n /= d
+    #             yield d
+    #         d += 1
+    #     if n > 1:
+    #         yield n
+    # return int(sum(factors(n)))
 
 # def minOperations(n):
 #     """Returns minimum operations to result in n characters in a text file"""
