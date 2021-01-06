@@ -22,12 +22,12 @@ def minOperations(n):
     step = 2
     while n > 1:
         while n % step == 0:
-            # print("n is: {}".format(n))
-            # print("step is: {}".format(step))
+            print("n is: {}".format(n))
+            print("step is: {}".format(step))
             min_ops += step
-            # print("min_ops is: {}".format(min_ops))
+            print("min_ops is: {}".format(min_ops))
             n /= step
-            # print("After division, n is: {}".format(n))
+            print("After division, n is: {}".format(n))
         step += 1
     return min_ops
 
