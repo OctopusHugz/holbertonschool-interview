@@ -62,7 +62,7 @@ def minOperations(n):
     gd = greater_divisor(n, sd)
     # print("sd is: {}".format(sd))
     # print("gd is: {}".format(gd))
-    for i in range(2, n + 1, step):
+    for i in range(sd, n + 1, step):
         # print("i is: {}".format(i))
         # print("step is: {}".format(step))
         # print("min_ops is: {}".format(min_ops))
@@ -73,6 +73,6 @@ def minOperations(n):
         # print("i is now: {}".format(i))
         # print("step is now: {}".format(step))
         # print("min_ops is now: {}".format(min_ops))
-        if n % min_ops == 0 and gd is True and min_ops != sd:
+        if min_ops > 0 and n % min_ops == 0 and gd is True and min_ops != sd:
             return min_ops + (n // min_ops)
     return min_ops
