@@ -1,5 +1,9 @@
 #!/usr/bin/python3
+"""This module returns minimum operations"""
+
+
 def minOperations(n):
+    """Returns minimum operations to result in n characters in a text file"""
     if n < 1:
         return 0
     else:
