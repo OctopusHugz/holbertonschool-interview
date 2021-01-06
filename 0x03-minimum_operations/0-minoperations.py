@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 def minOperations(n):
-    return 0
+    if n:
+        return 0
 
 
 def minOperations_full(n):
