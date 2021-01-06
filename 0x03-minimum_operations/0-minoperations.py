@@ -66,13 +66,14 @@ def minOperations(n):
     # print("hd is: {}".format(hd))
     if n < 1:
         return 0
+    elif n == 1:
+        return 1
     for i in range(2, n + 1):
         while n % i == 0:
             min_ops += step
             n //= step
         step += 1
     return min_ops
-
 
     # def factors(n):
     #     d = 2
