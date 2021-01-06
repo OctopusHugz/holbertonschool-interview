@@ -14,6 +14,8 @@ def minOperations(n):
     """Returns minimum operations to result in n characters in a text file"""
     # find smallest divisor starting at 2
     # if no divisor found, it's prime number
+    if n < 1:
+        return 0
     sd = smallest_divisor(n)
     if sd == n:
         # prime number
