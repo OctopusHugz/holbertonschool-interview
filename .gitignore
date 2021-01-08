@@ -11,3 +11,4 @@
 *.json
 *main.py
 *.so
+check.sh
