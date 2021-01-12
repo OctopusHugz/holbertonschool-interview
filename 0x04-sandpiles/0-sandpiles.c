@@ -31,6 +31,12 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 	}
 }
 
+/**
+ * add_sandpiles - adds together 2 sandpiles
+ * @grid1: first sandpile
+ * @grid2: second sandpile
+ **/
+
 void add_sandpiles(int grid1[3][3], int grid2[3][3])
 {
 	int x, y;
@@ -41,6 +47,12 @@ void add_sandpiles(int grid1[3][3], int grid2[3][3])
 			grid1[x][y] += grid2[x][y];
 	}
 }
+
+/**
+ * is_stable_sandpile - checks if a sandpile is stable
+ * @grid1: sandpile to check for stability
+ * Return: number of sandpiles to topple
+ **/
 
 int is_stable_sandpile(int grid1[3][3])
 {
@@ -54,6 +66,12 @@ int is_stable_sandpile(int grid1[3][3])
 	}
 	return (topple_count);
 }
+
+/**
+ * topple - topples a sandpile
+ * @grid1: sandpile to topple
+ * @topple_count: number of sandpiles to topple
+ **/
 
 void topple(int grid1[3][3], int topple_count)
 {
@@ -74,30 +92,6 @@ void topple(int grid1[3][3], int topple_count)
 			{
 				toppled[x][y] = 1;
 				grid1[x][y] -= 4;
-				/* if (x > 0)
-				{
-					grid1[x - 1][y]++;
-					print_grid(grid1);
-					printf("=\n");
-				}
-				if (y > 0)
-				{
-					grid1[x][y - 1]++;
-					print_grid(grid1);
-					printf("=\n");
-				}
-				if (x < 2)
-				{
-					grid1[x + 1][y]++;
-					print_grid(grid1);
-					printf("=\n");
-				}
-				if (y < 2)
-				{
-					grid1[x][y + 1]++;
-					print_grid(grid1);
-					printf("=\n");
-				} */
 				if (x > 0)
 					grid1[x - 1][y]++;
 				if (y > 0)
@@ -111,6 +105,11 @@ void topple(int grid1[3][3], int topple_count)
 		}
 	}
 }
+
+/**
+ * print_grid - prints a grid
+ * @grid: sandpile to print
+ **/
 
 static void print_grid(int grid[3][3])
 {
