@@ -15,8 +15,10 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 	topple_count = is_stable_sandpile(grid1);
 	if (topple_count == 0)
 		return;
-
-	while (topple_count > 0)
+	printf("=\n");
+	print_grid(grid1);
+	printf("=\n");
+	/* while (topple_count > 0)
 	{
 		topple(grid1, topple_count);
 		topple_count = is_stable_sandpile(grid1);
@@ -24,6 +26,17 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 		{
 			print_grid(grid1);
 			printf("=\n");
+		}
+	} */
+	while (topple_count > 0)
+	{
+		topple(grid1, topple_count);
+		topple_count = is_stable_sandpile(grid1);
+		if (topple_count > 0)
+		{
+			print_grid(grid1);
+			if (topple_count > 1)
+				printf("=\n");
 		}
 	}
 }
@@ -98,6 +111,23 @@ void topple(int grid1[3][3], int topple_count)
 				if (y < 2)
 					grid1[x][y + 1]++;
 				topple_count--;
+			}
+			else if (grid1[x][y] > 3 && topple_count > 0 && (toppled[x - 1][y] == 1 || toppled[x][y - 1] == 1))
+			{
+				if (grid1[x][y] - 1 > 3)
+				{
+					toppled[x][y] = 1;
+					grid1[x][y] -= 4;
+					if (x > 0)
+						grid1[x - 1][y]++;
+					if (y > 0)
+						grid1[x][y - 1]++;
+					if (x < 2)
+						grid1[x + 1][y]++;
+					if (y < 2)
+						grid1[x][y + 1]++;
+					topple_count--;
+				}
 			}
 		}
 	}
