@@ -15,4 +15,4 @@ void topple(int grid1[3][3], int topple_count);
 
 static void print_grid(int grid[3][3]);
 
-#endif SANDPILES_H
+#endif /* SANDPILES_H */
