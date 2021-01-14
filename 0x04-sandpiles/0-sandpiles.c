@@ -9,7 +9,7 @@
 
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
-	int x, y, topple_count = 0, grid3_tc = 0, grid3[3][3];
+	int /* x, y, */ topple_count = 0 /* , grid3_tc = 0, grid3[3][3] */;
 
 	add_sandpiles(grid1, grid2);
 	topple_count = is_stable_sandpile(grid1);
@@ -17,20 +17,20 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 		return;
 	printf("=\n");
 	print_grid(grid1);
-	printf("=\n");
 	while (topple_count > 0)
 	{
 		topple(grid1);
 		topple_count = is_stable_sandpile(grid1);
 		if (topple_count > 0)
 		{
-			for (x = 0; x < 3; x++)
+			/* for (x = 0; x < 3; x++)
 			{
 				for (y = 0; y < 3; y++)
 					grid3[x][y] = 0;
-			}
+			} */
+			printf("=\n");
 			print_grid(grid1);
-			add_sandpiles(grid3, grid1);
+			/* add_sandpiles(grid3, grid1);
 			grid3_tc = is_stable_sandpile(grid3);
 			if (grid3_tc > 0)
 			{
@@ -38,9 +38,7 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 				grid3_tc = is_stable_sandpile(grid3);
 				if (grid3_tc > 0)
 					printf("=\n");
-			}
-			/* if (topple_count > 1)
-				printf("=\n"); */
+			} */
 		}
 	}
 }
@@ -86,33 +84,6 @@ void topple(int grid1[3][3])
 			}
 		}
 	}
-
-	/* for (x = 0; x < 3; x++)
-	{
-		for (y = 0; y < 3; y++)
-		{
-			if (grid1[x][y] > 3 &&
-				((toppled[x - 1][y] != 1 || toppled[x][y - 1] != 1) ||
-				 (toppled[x - 1][y] == 1 || toppled[x][y - 1] == 1)))
-			{
-				if (((toppled[x - 1][y] == 1 || toppled[x][y - 1] == 1) &&
-					 (grid1[x][y] - 1 > 3)) ||
-					(toppled[x - 1][y] != 1 || toppled[x][y - 1] != 1))
-				{
-					toppled[x][y] = 1;
-					grid1[x][y] -= 4;
-					if (x > 0)
-						grid1[x - 1][y]++;
-					if (y > 0)
-						grid1[x][y - 1]++;
-					if (x < 2)
-						grid1[x + 1][y]++;
-					if (y < 2)
-						grid1[x][y + 1]++;
-				}
-			}
-		}
-	} */
 }
 
 /**
