@@ -12,9 +12,9 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 	int topple_count = 0;
 
 	add_sandpiles(grid1, grid2);
-	printf("=\n");
+	/* printf("=\n");
 	print_grid(grid1);
-	printf("=\n");
+	printf("=\n"); */
 	topple_count = is_stable_sandpile(grid1);
 	if (topple_count == 0)
 		return;
