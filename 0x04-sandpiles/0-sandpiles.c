@@ -20,7 +20,7 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 	printf("=\n");
 	while (topple_count > 0)
 	{
-		topple(grid1, topple_count);
+		topple(grid1);
 		topple_count = is_stable_sandpile(grid1);
 		if (topple_count > 0)
 		{
@@ -34,13 +34,57 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 			grid3_tc = is_stable_sandpile(grid3);
 			if (grid3_tc > 0)
 			{
-				topple(grid3, grid3_tc);
+				topple(grid3);
 				grid3_tc = is_stable_sandpile(grid3);
 				if (grid3_tc > 0)
 					printf("=\n");
 			}
 			/* if (topple_count > 1)
 				printf("=\n"); */
+		}
+	}
+}
+
+/**
+ * topple - topples a sandpile
+ * @grid1: sandpile to topple
+ * @topple_count: number of sandpiles to topple
+ **/
+
+void topple(int grid1[3][3])
+{
+	int x, y, toppled[3][3];
+
+	for (x = 0; x < 3; x++)
+	{
+		for (y = 0; y < 3; y++)
+			toppled[x][y] = 0;
+	}
+
+	for (x = 0; x < 3; x++)
+	{
+		for (y = 0; y < 3; y++)
+		{
+			if (grid1[x][y] > 3 &&
+				((toppled[x - 1][y] != 1 || toppled[x][y - 1] != 1) ||
+				 (toppled[x - 1][y] == 1 || toppled[x][y - 1] == 1)))
+			{
+				if (((toppled[x - 1][y] == 1 || toppled[x][y - 1] == 1) &&
+					 (grid1[x][y] - 1 > 3)) ||
+					(toppled[x - 1][y] != 1 || toppled[x][y - 1] != 1))
+				{
+					toppled[x][y] = 1;
+					grid1[x][y] -= 4;
+					if (x > 0)
+						grid1[x - 1][y]++;
+					if (y > 0)
+						grid1[x][y - 1]++;
+					if (x < 2)
+						grid1[x + 1][y]++;
+					if (y < 2)
+						grid1[x][y + 1]++;
+				}
+			}
 		}
 	}
 }
@@ -79,51 +123,6 @@ int is_stable_sandpile(int grid1[3][3])
 				topple_count++;
 	}
 	return (topple_count);
-}
-
-/**
- * topple - topples a sandpile
- * @grid1: sandpile to topple
- * @topple_count: number of sandpiles to topple
- **/
-
-void topple(int grid1[3][3], int topple_count)
-{
-	int x, y, toppled[3][3];
-
-	for (x = 0; x < 3; x++)
-	{
-		for (y = 0; y < 3; y++)
-			toppled[x][y] = 0;
-	}
-
-	for (x = 0; x < 3; x++)
-	{
-		for (y = 0; y < 3; y++)
-		{
-			if (grid1[x][y] > 3 && topple_count > 0 &&
-				((toppled[x - 1][y] != 1 || toppled[x][y - 1] != 1) ||
-				 (toppled[x - 1][y] == 1 || toppled[x][y - 1] == 1)))
-			{
-				if (((toppled[x - 1][y] == 1 || toppled[x][y - 1] == 1) &&
-					 (grid1[x][y] - 1 > 3)) ||
-					(toppled[x - 1][y] != 1 || toppled[x][y - 1] != 1))
-				{
-					toppled[x][y] = 1;
-					grid1[x][y] -= 4;
-					if (x > 0)
-						grid1[x - 1][y]++;
-					if (y > 0)
-						grid1[x][y - 1]++;
-					if (x < 2)
-						grid1[x + 1][y]++;
-					if (y < 2)
-						grid1[x][y + 1]++;
-					topple_count--;
-				}
-			}
-		}
-	}
 }
 
 /**
