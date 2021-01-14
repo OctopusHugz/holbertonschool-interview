@@ -58,10 +58,36 @@ void topple(int grid1[3][3])
 	for (x = 0; x < 3; x++)
 	{
 		for (y = 0; y < 3; y++)
-			toppled[x][y] = 0;
+		{
+			if (grid1[x][y] > 3)
+				toppled[x][y] = 1;
+			else
+				toppled[x][y] = 0;
+		}
 	}
 
 	for (x = 0; x < 3; x++)
+	{
+		for (y = 0; y < 3; y++)
+		{
+			if (toppled[x][y] == 1)
+			{
+				{
+					grid1[x][y] -= 4;
+					if (x > 0)
+						grid1[x - 1][y]++;
+					if (y > 0)
+						grid1[x][y - 1]++;
+					if (x < 2)
+						grid1[x + 1][y]++;
+					if (y < 2)
+						grid1[x][y + 1]++;
+				}
+			}
+		}
+	}
+
+	/* for (x = 0; x < 3; x++)
 	{
 		for (y = 0; y < 3; y++)
 		{
@@ -86,7 +112,7 @@ void topple(int grid1[3][3])
 				}
 			}
 		}
-	}
+	} */
 }
 
 /**
