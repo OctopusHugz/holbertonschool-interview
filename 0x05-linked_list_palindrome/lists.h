@@ -24,4 +24,11 @@ void free_listint(listint_t *head);
 
 int is_palindrome(listint_t **head);
 
+int check_palindrome(listint_t *current, listint_t *tail, int tail_counter,
+                     int tail_moves);
+
+/* int check_palindrome(listint_t **head, listint_t *current, listint_t *half,
+                     listint_t *tail, int halfway_point, int current_counter,
+                     int tail_counter, int tail_moves); */
+
 #endif /* LISTS_H */
