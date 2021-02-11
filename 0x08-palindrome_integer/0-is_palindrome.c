@@ -5,10 +5,12 @@
  * palindrome
  * @n: number to be checked
  *
- * Return: 1 if n is a plaindrome, 0 otherwise
+ * Return: 1 if n is a palindrome, 0 otherwise
  **/
 
 int is_palindrome(unsigned long n)
-
 {
+	if (n)
+		return (1);
+	return (0);
 }
