@@ -10,7 +10,17 @@
 
 int is_palindrome(unsigned long n)
 {
-	if (n)
+	int fd, ld = n % 10;
+
+	fd = first_digit(n);
+	if (fd == ld)
 		return (1);
 	return (0);
+}
+
+int first_digit(unsigned long n)
+{
+	while (n >= 10)
+		n /= 10;
+	return (n);
 }
