@@ -15,7 +15,7 @@ def validUTF8(data):
             continue
         else:
             # Ensure multi-byte sequences no greater than 4 bytes
-            if num >= 194 and num <= 223:
+            if num >= 192 and num <= 223:
                 # 2 byte character
                 next_set = data[i+1:i+2]
             elif num >= 224 and num <= 239:
