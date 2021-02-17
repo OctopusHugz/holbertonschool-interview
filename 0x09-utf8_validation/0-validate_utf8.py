@@ -25,7 +25,7 @@ def validUTF8(data):
                 next_set = data[i+1:i+3]
                 if len(next_set) < 2:
                     return False
-            elif num >= 240 and num <= 247:
+            elif num >= 240 and num <= 244:
                 # 4 byte character
                 next_set = data[i+1:i+4]
                 if len(next_set) < 3:
