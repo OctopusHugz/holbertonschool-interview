@@ -11,6 +11,7 @@ def validUTF8(data):
             skip -= 1
             continue
         num = data[i]
+        num = num & 255
         if num >= 0 and num <= 127:
             continue
         else:
