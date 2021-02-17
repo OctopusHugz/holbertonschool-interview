@@ -6,6 +6,8 @@ def validUTF8(data):
     """Determines if given data set represents valid UTF-8 encoding and returns
     true if data set is valid UTF-8, otherwise returns false"""
     skip = 0
+    if len(data) == 0:
+        return False
     for i in range(len(data)):
         if skip > 0:
             skip -= 1
