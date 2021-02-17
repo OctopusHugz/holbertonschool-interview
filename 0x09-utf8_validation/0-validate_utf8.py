@@ -18,10 +18,10 @@ def validUTF8(data):
             if num >= 194 and num <= 223:
                 # 2 byte character
                 next_set = data[i+1:i+2]
-            elif num >= 226 and num <= 239:
+            elif num >= 224 and num <= 239:
                 # 3 byte character
                 next_set = data[i+1:i+3]
-            elif num >= 242 and num <= 247:
+            elif num >= 240 and num <= 247:
                 # 4 byte character
                 next_set = data[i+1:i+4]
             else:
