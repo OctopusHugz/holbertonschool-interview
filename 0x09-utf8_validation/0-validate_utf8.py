@@ -18,12 +18,18 @@ def validUTF8(data):
             if num >= 194 and num <= 223:
                 # 2 byte character
                 next_set = data[i+1:i+2]
+                if len(next_set) < 1:
+                    return False
             elif num >= 224 and num <= 239:
                 # 3 byte character
                 next_set = data[i+1:i+3]
+                if len(next_set) < 2:
+                    return False
             elif num >= 240 and num <= 247:
                 # 4 byte character
                 next_set = data[i+1:i+4]
+                if len(next_set) < 3:
+                    return False
             else:
                 return False
             # First byte correct, check rest of bytes in next_set for 128-191
