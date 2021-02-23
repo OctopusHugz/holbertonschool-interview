@@ -41,8 +41,8 @@ int slide_line(int *line, size_t size, int direction)
 			next_index = find_next_nz_element(line, i, size, direction);
 			/* printf("i is: %ld\n", i);
 			printf("next_index of non-zero element is: %ld\n", next_index); */
-			if (next_index == size - 1)
-				return (1);
+			/* if (next_index == 0)
+				return (1); */
 			merge(line, i, next_index, size, direction);
 		}
 	}
@@ -101,6 +101,13 @@ void merge(int *line, size_t i, size_t next_index, size_t size, int direction)
 	if (line[i] == line[next_index])
 	{
 		line[i] += line[next_index];
+		line[next_index] = 0;
+		return;
+	}
+	/* If sliding right and we're at the start of the list */
+	if (next_index == 0)
+	{
+		line[i] += current_value;
 		line[next_index] = 0;
 		return;
 	}
