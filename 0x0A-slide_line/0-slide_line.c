@@ -93,14 +93,19 @@ void merge(int *line, size_t i, size_t next_index, size_t size, int direction)
 	}
 	/* If the number in current index != number in next_index(next non-zero element), then find the next non-zero element from next index to see if it needs to merge */
 	merge_index = find_next_nz_element(line, next_index, size, direction);
+	printf("merge_index is: %ld\n", merge_index);
 	/* If we're in a 0 cell and next item is last non-zero element */
 	if ((merge_index == size || merge_index == 0) && line[i] == 0)
 	{
 		line[i] = line[next_index];
+		if (merge_index == 0)
+		{
+			line[i] += line[merge_index];
+			line[merge_index] = 0;
+		}
 		line[next_index] = 0;
 		return;
 	}
-	printf("merge_index is: %ld\n", merge_index);
 	merge_value = line[merge_index];
 	if (current_value == merge_value && line[i] == 0)
 	{
