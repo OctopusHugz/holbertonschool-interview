@@ -70,8 +70,8 @@ void merge(int *line, size_t i, size_t next_index, size_t size, int direction)
 		if (line[i] == current_value || line[i] == 0)
 		{
 			line[i] += current_value, line[next_index] = 0;
+			return;
 		}
-		return;
 	}
 	merge_index = find_next_nz_element(line, next_index, size, direction);
 	if ((merge_index == size || merge_index == 0) && line[i] == 0)
