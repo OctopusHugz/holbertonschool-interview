@@ -37,7 +37,7 @@ int slide_line(int *line, size_t size, int direction)
 		}
 	}
 	else
-		return (1);
+		return (0);
 	return (1);
 }
 
@@ -77,7 +77,7 @@ void merge(int *line, size_t i, size_t next_index, size_t size, int direction)
 	if ((merge_index == size || merge_index == 0) && line[i] == 0)
 	{
 		line[i] = line[next_index];
-		if (merge_index == 0)
+		if (merge_index == 0 && line[i] == line[merge_index])
 		{
 			line[i] += line[merge_index];
 			line[merge_index] = 0;
