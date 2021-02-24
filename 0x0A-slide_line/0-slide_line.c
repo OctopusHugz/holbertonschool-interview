@@ -12,8 +12,6 @@ int slide_line(int *line, size_t size, int direction)
 {
 	size_t i, next_index;
 
-	if (size < 1)
-		return (0);
 	/* SLIDE AND MERGE LEFT */
 	if (direction == -1)
 	{
@@ -39,7 +37,7 @@ int slide_line(int *line, size_t size, int direction)
 		}
 	}
 	else
-		return (0);
+		return (1);
 	return (1);
 }
 
