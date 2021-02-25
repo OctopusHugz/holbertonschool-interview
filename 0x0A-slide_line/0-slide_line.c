@@ -12,27 +12,21 @@ int slide_line(int *line, size_t size, int direction)
 {
 	size_t i, next_index;
 
-	/* SLIDE AND MERGE LEFT */
-	if (direction == -1)
+	if (direction == SLIDE_LEFT)
 	{
 		for (i = 0; i < size; i++)
 		{
-			/* Find index of next non-zero element */
 			next_index = find_next_nz_element(line, i, size, direction);
 			if (next_index == size)
 				return (1);
-			/* Check if it needs to merge, then swap values if so */
 			merge(line, i, next_index, size, direction);
 		}
 	}
-	/* SLIDE AND MERGE RIGHT */
-	else if (direction == 1)
+	else if (direction == SLIDE_RIGHT)
 	{
 		for (i = size - 1; i > 0; i--)
 		{
-			/* Find index of next non-zero element */
 			next_index = find_next_nz_element(line, i, size, direction);
-			/* Check if it needs to merge, then swap values */
 			merge(line, i, next_index, size, direction);
 		}
 	}
@@ -105,12 +99,11 @@ size_t find_next_nz_element(int *line, size_t i, size_t size, int direction)
 {
 	size_t index = i;
 
-	if (index < size && direction == -1)
+	if (index < size && direction == SLIDE_LEFT)
 		index++;
 	else
 		index--;
-	/* SLIDE AND MERGE LEFT */
-	if (direction == -1)
+	if (direction == SLIDE_LEFT)
 	{
 		for (; index < size; index++)
 		{
@@ -118,8 +111,7 @@ size_t find_next_nz_element(int *line, size_t i, size_t size, int direction)
 				return (index);
 		}
 	}
-	/* SLIDE AND MERGE RIGHT */
-	else if (direction == 1)
+	else if (direction == SLIDE_RIGHT)
 	{
 		for (; index > 0; index--)
 		{
