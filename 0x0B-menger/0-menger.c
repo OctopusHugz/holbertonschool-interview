@@ -9,4 +9,6 @@ void menger(int level)
 {
 	if (level == -1)
 		return;
+	else if (level == 0)
+		printf("#\n");
 }
