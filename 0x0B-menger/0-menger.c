@@ -11,4 +11,6 @@ void menger(int level)
 		return;
 	else if (level == 0)
 		printf("#\n");
+	else if (level == 1)
+		printf("###\n# #\n###\n");
 }
