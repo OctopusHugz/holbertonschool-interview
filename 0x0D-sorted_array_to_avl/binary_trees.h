@@ -29,4 +29,8 @@ void binary_tree_print(const binary_tree_t *);
 
 avl_t *sorted_array_to_avl(int *array, size_t size);
 
+avl_t *build_tree(int *array, int start, int end, avl_t *prev_root);
+
+avl_t *make_node(int data);
+
 #endif /* BINARY_TREES_H */
