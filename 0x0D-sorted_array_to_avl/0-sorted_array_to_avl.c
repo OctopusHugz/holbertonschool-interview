@@ -25,10 +25,14 @@ avl_t *sorted_array_to_avl(int *array, size_t size)
 
 avl_t *build_tree(int *array, int start, int end, avl_t *prev_root)
 {
-	int mid = (start + end) / 2;
-	avl_t *root = make_node(array[mid]);
+	int mid;
+	avl_t *root;
 
-	if (start > end || !root)
+	if (start > end || start < 0)
+		return (NULL);
+	mid = (start + end) / 2;
+	root = make_node(array[mid]);
+	if (!root)
 		return (NULL);
 	root->parent = prev_root;
 	root->left = build_tree(array, start, mid - 1, root);
