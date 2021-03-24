@@ -18,6 +18,7 @@ avl_t *sorted_array_to_avl(int *array, size_t size)
  * @array: pointer to first element of array to be converted
  * @start: index of array to start at
  * @end: index of array to end at
+ * @prev_root: parent node of current position
  *
  * Return: pointer to root node of AVL tree created, or NULL on failure
  **/
