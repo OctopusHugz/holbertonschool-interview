@@ -12,8 +12,8 @@
 
 skiplist_t *linear_skip(skiplist_t *list, int value)
 {
-	skiplist_t *node = list, *temp;
-	size_t pi, length = list_len(list);
+	skiplist_t *node = list, *temp = list;
+	size_t pi = 0, length = list_len(list);
 	char *found = "Value found between indexes ";
 	char *checked = "Value checked at index ";
 
