@@ -30,6 +30,7 @@ void heap_sort(int *array, size_t size)
 				sorted = 0;
 				break;
 			}
+			count++;
 		}
 		if (!sorted)
 			print_array(array, size);
