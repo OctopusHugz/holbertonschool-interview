@@ -20,6 +20,6 @@ void heap_sort(int *array, size_t size)
 		print_array(array, size);
 		return;
 	}
-	if (array && size > 1 && (array[0] > array[1] || array[0] != array[size - 1]))
+	if (array && size > 1)
 		print_array(array, size);
 }
