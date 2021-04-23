@@ -11,7 +11,7 @@ void heap_sort(int *array, size_t size)
 	int temp, sorted = 1;
 	size_t count = 0;
 
-	if (size == 0 || !array)
+	if (size <= 1 || !array)
 		return;
 	if (size == 2)
 	{
