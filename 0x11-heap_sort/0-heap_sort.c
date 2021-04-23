@@ -8,8 +8,8 @@
 
 void heap_sort(int *array, size_t size)
 {
-	if (!array || size < 1)
+	if (size == 0 || !array)
 		return;
-	if (size > 1 && array[0] > array[1])
+	if (size > 1 && (array[0] > array[1] || array[0] == array[size - 1]))
 		print_array(array, size);
 }
