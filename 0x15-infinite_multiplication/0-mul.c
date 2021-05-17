@@ -14,12 +14,12 @@ int main(int argc, char *argv[])
 	char *endptr_one, *endptr_two;
 
 	error_checks(argc, argv);
-	first = strtol(argv[1], &endptr_one, 10);
+	first = strtoull(argv[1], &endptr_one, 10);
 	while (*endptr_one)
 	{
 		first *= strtoull(argv[1], &endptr_one, 10);
 	}
-	second = strtol(argv[2], &endptr_two, 10);
+	second = strtoull(argv[2], &endptr_two, 10);
 	while (*endptr_two)
 	{
 		second *= strtoull(argv[2], &endptr_two, 10);
