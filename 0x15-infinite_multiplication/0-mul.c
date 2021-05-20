@@ -10,22 +10,15 @@
 
 int main(int argc, char *argv[])
 {
-	unsigned long long first, second, result;
-	char *endptr_one, *endptr_two;
+	int first, second, result;
+	char result_string[4096];
 
 	error_checks(argc, argv);
-	first = strtoull(argv[1], &endptr_one, 10);
-	while (*endptr_one)
-	{
-		first *= strtoull(argv[1], &endptr_one, 10);
-	}
-	second = strtoull(argv[2], &endptr_two, 10);
-	while (*endptr_two)
-	{
-		second *= strtoull(argv[2], &endptr_two, 10);
-	}
+	first = atoi(argv[1]);
+	second = atoi(argv[2]);
 	result = first * second;
-	printf("%lld\n", (unsigned long long)(result));
+	itoa(result, result_string);
+	_puts(result_string);
 	return (0);
 }
 
@@ -40,14 +33,14 @@ void error_checks(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		printf("Error\n");
+		_puts("Error");
 		exit(98);
 	}
 	for (i = 0; argv[1][i]; i++)
 	{
 		if (!isdigit(argv[1][i]))
 		{
-			printf("Error\n");
+			_puts("Error");
 			exit(98);
 		}
 	}
@@ -55,8 +48,76 @@ void error_checks(int argc, char *argv[])
 	{
 		if (!isdigit(argv[2][i]))
 		{
-			printf("Error\n");
+			_puts("Error");
 			exit(98);
 		}
 	}
 }
+
+#include "holberton.h"
+
+/**
+ * _puts - puts a string, followed by \n, to stdout
+ * @str: string to put to stdout
+ */
+
+void _puts(char *str)
+{
+	int i = 0;
+
+	for (; str[i] != '\0'; i++)
+	{
+		_putchar(str[i]);
+	}
+	_putchar('\n');
+}
+
+
+ void itoa(int n, char s[])
+ {
+     int i, sign;
+
+     if ((sign = n) < 0)  /* record sign */
+         n = -n;          /* make n positive */
+     i = 0;
+     do {       /* generate digits in reverse order */
+         s[i++] = n % 10 + '0';   /* get next digit */
+     } while ((n /= 10) > 0);     /* delete it */
+     if (sign < 0)
+         s[i++] = '-';
+     s[i] = '\0';
+     reverse(s);
+ }
+
+
+ /**
+ * _strlen - returns the length of a string
+ * @s: String to return the lenght of
+ *
+ * Return: 0 if success
+ */
+
+int _strlen(char *s)
+{
+	int i = 0;
+	int len = 0;
+
+	for (; s[i] != '\0'; i++)
+	{
+		len++;
+	}
+	return (len);
+	_putchar('\n');
+}
+
+void reverse(char s[])
+ {
+     int i, j;
+     char c;
+
+     for (i = 0, j = _strlen(s)-1; i<j; i++, j--) {
+         c = s[i];
+         s[i] = s[j];
+         s[j] = c;
+     }
+ }
