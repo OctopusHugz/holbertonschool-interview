@@ -1,3 +1,4 @@
+""" This module implements a makeChabge function """
 #!/usr/bin/python3
 def makeChange(coins, total):
     """ Determines the fewest number of coins needed to meet given total """
