@@ -20,6 +20,7 @@ typedef struct List
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 List *add_node_end(List **list, char *str);
 
