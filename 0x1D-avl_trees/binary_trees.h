@@ -34,12 +34,10 @@ int binary_tree_is_avl(const binary_tree_t *tree);
 
 void binary_tree_print(const binary_tree_t *tree);
 
-binary_tree_t *binary_tree_node(const binary_tree_t *tree, int n);
-
 int binary_tree_balance(const binary_tree_t *tree);
 
 size_t binary_tree_height(const binary_tree_t *tree);
 
-int is_BST(const binary_tree_t *tree);
+int is_BST(const binary_tree_t *tree, int val);
 
 #endif /* BINARY_TREES_H */

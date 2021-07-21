@@ -18,11 +18,7 @@ int binary_tree_is_avl(const binary_tree_t *tree)
 	right_st_bf = binary_tree_balance(tree->right);
 	if (root_bf < -1 || root_bf > 1 || left_st_bf > 1 || right_st_bf < -1)
 		return (0);
-	else if (!is_BST(tree))
-		return (0);
-	else if (tree->left && !is_BST(tree->left))
-		return (0);
-	else if (tree->right && !is_BST(tree->right))
+	else if (!is_BST(tree, tree->n))
 		return (0);
 	return (1);
 }
@@ -72,15 +68,16 @@ int binary_tree_balance(const binary_tree_t *tree)
 /**
  * is_BST - determines if tree is a BST
  * @tree: pointer to the root node of the tree to check for valid BST
+ * @val: value of the root node of the tree
  * Return: 1 if valid BST, 0 if not
  **/
-int is_BST(const binary_tree_t *tree)
+int is_BST(const binary_tree_t *tree, int val)
 {
 	if (!tree)
 		return (0);
-	if (tree->left && (tree->left->n >= tree->n || !is_BST(tree->left)))
+	if (tree->left && (tree->left->n >= val || !is_BST(tree->left, val)))
 		return (0);
-	if (tree->right && (tree->right->n <= tree->n || !is_BST(tree->right)))
+	if (tree->right && (tree->right->n <= val || !is_BST(tree->right, val)))
 		return (0);
 	return (1);
 }
