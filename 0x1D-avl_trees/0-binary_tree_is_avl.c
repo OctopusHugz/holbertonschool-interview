@@ -78,13 +78,9 @@ int is_BST(const binary_tree_t *tree)
 {
 	if (!tree)
 		return (0);
-	if (tree->left && tree->left->n >= tree->n)
+	if (tree->left && (tree->left->n >= tree->n || !is_BST(tree->left)))
 		return (0);
-	if (tree->right && tree->right->n <= tree->n)
-		return (0);
-	if (tree->left && !is_BST(tree->left))
-		return (0);
-	if (tree->right && !is_BST(tree->right))
+	if (tree->right && (tree->right->n <= tree->n || !is_BST(tree->right)))
 		return (0);
 	return (1);
 }
