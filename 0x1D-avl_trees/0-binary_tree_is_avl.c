@@ -9,13 +9,14 @@
 
 int binary_tree_is_avl(const binary_tree_t *tree)
 {
-	int root_balance_factor = binary_tree_balance(tree);
-	int left_st_bf = binary_tree_balance(tree->left);
-	int right_st_bf = binary_tree_balance(tree->right);
+	int root_bf, left_st_bf, right_st_bf;
 
-	if (!tree || root_balance_factor < -1 || root_balance_factor > 1)
+	if (!tree)
 		return (0);
-	else if (left_st_bf > 1 || right_st_bf < -1)
+	root_bf = binary_tree_balance(tree);
+	left_st_bf = binary_tree_balance(tree->left);
+	right_st_bf = binary_tree_balance(tree->right);
+	if (root_bf < -1 || root_bf > 1 || left_st_bf > 1 || right_st_bf < -1)
 		return (0);
 	return (1);
 }
