@@ -18,19 +18,7 @@ int wildcmp(char *s1, char *s2)
 		return wildcmp(s1 + 1, s2 + 1);
 	/* Wildcard match in s2: need to check further */
 	else if (*s2 == '*')
-	{
-		/* printf("s1: %c\ns2: %c\n\n", *s1, *s2);
-		printf("s1: %c\ns2 + 1: %c\n\n", *s1, *(s2 + 1));
-
-		if (*s1 != '\0' && (*s1 == *(s2 + 1) || *(s2 + 1) == '*'))
-			return wildcmp(s1, s2 + 1);
-		else if (*s1 != '\0' && *(s1 + 1) != *(s2 + 1))
-			return wildcmp(s1 + 1, s2);
-		else if (*s1 != '\0' && *(s1 + 1) == *(s2 + 1))
-			return wildcmp(s1 + 1, s2 + 1);
-		return wildcmp(s1, s2 + 1); */
 		return wildcmp(s1, s2 + 1) || (*s1 != '\0' && wildcmp(s1 + 1, s2));
-	}
 	/* No match */
 	return (0);
 }
