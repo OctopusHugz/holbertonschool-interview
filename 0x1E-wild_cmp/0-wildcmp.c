@@ -10,14 +10,20 @@
 
 int wildcmp(char *s1, char *s2)
 {
-	/* Base Case: we've reached the end of both strings, thus it's a match */
 	if (*s1 == '\0' && *s2 == '\0')
+	/* Base Case: we've reached the end of both strings, so it's a match */
 		return (1);
-	/* Exact character match: move forward 1 char in each string */
 	else if (*s1 == *s2)
+	/* Exact character match: move forward 1 char in each string */
 		return wildcmp(s1 + 1, s2 + 1);
-	/* Wildcard match in s2: need to check further */
 	else if (*s2 == '*')
+	/*** Wildcard match in s2, 2 possibilities:
+	 * 1: Move forward 1 char in s2 to see if matches continue after wildcard
+	 * to null byte
+	 * 2: Move forward 1 char in s1 (if not at the end yet) to keep using
+	 * wildcard as match until there's a character for character match after
+	 * wildcard and then see if matches continue to null byte
+	 ***/
 		return wildcmp(s1, s2 + 1) || (*s1 != '\0' && wildcmp(s1 + 1, s2));
 	/* No match */
 	return (0);
