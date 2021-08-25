@@ -4,4 +4,4 @@
 
 def isWinner(x, nums):
     """ Returns the winner of the Prime Game """
-    return "Maria"
+    return "Ben"
